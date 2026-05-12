@@ -30,6 +30,9 @@ class Stack:                                 # clase pila implementada con nodos
             return None                      # devuelve None para indicar pila vacía
         return self.tope.valor               # devuelve el valor del tope
 
+    def esta_vacia(self):                    # verifica si la pila no tiene elementos
+        return self.tope is None             # es vacía cuando el tope no apunta a nada
+
     def limpiar(self):                       # vacía la pila por completo
         self.tope = None                     # elimina la referencia al tope
         self.tamanio = 0                     # reinicia el contador a cero
