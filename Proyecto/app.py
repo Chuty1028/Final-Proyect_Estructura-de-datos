@@ -14,7 +14,7 @@ app = Flask(__name__)
 editor = EditorNotas()
 
 
-# ruta principal: cuando el usuario abre http://127.0.0.1:5000 lo lleva al index.html de interfaz/
+# ruta principal: cuando el usuario abre http://127.0.0.1:5001 lo lleva al index.html de interfaz/
 @app.route("/")
 def index():
     return send_from_directory(INTERFAZ_DIR, "index.html")
