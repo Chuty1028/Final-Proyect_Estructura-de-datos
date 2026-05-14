@@ -137,6 +137,7 @@ class EditorNotas:
         self.texto = accion.despues
 
         return True
+    
 
     # --- FUNCIONALIDAD CORE 5 / limpiar editor --- 
 
