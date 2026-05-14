@@ -57,8 +57,30 @@ button {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+/* efecto hover general */
 button:hover {
-  transform: translateY(-1px);
+
+  transform: translateY(-2px);
+
+  transition: 0.2s ease;
+}
+
+/* boton undo */
+#undoBtn:hover {
+
+  background-color: #dcd6ca;
+}
+
+/* boton redo */
+#redoBtn:hover {
+
+  background-color: #ffe27d;
+}
+
+/* boton eliminar */
+#deleteBtn:hover {
+
+  background-color: #ffbf47;
 }
 
 button:active {
