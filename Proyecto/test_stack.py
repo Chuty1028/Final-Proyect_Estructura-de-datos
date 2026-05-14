@@ -4,10 +4,12 @@ from Proyecto.stacks import Stack
 class TestStack(unittest.TestCase):      # hereda de TestCase para tener assertEqual, True, False y None
                                          # dependiendo que hay que probar se usa cada una
 
-    def test_push_y_peek(self):                  # test: verificar que push guarda y peek lo muestra
+    def test_push_y_peek(self):                  # test: verificar que push guarda
         s = Stack()                              # crea una pila vacía
         s.push("alex")
-        self.assertEqual(s.peek(), "alex")   # ¿el tope es "alex"? si no → falla
+        s.push("Daniel")
+        s.push("Joaquin")
+        self.assertEqual(s.peek(), "Joaquin")   # ¿el tope es "Joauqin"? si no → falla
 
     def test_pop_regresa_valor(self):             # test: verificar que pop devuelve el valor correcto
         s = Stack()
@@ -49,7 +51,12 @@ class TestStack(unittest.TestCase):      # hereda de TestCase para tener assertE
 
     def test_a_lista(self):              # test: verificar que la conversión a lista es correcta
         s = Stack()                      # crea una pila vacía
-        s.push("a")                      
-        s.push("b")                
+        s.push("a")
+        s.push("b")
         self.assertEqual(s.lista(), ["b", "a"])  # ¿la lista es ["b","a"] (de arriba a abajo)? si no → falla
+
+    def test_peek_valor(self):           # test: verificar que peek devuelve el valor del tope
+        s = Stack()                      # crea una pila vacía
+        s.push("Perro")                   # mete "Perro"
+        self.assertEqual(s.peek(), "Perro")  # ¿peek devuelve "Perro"? si no → falla
 
