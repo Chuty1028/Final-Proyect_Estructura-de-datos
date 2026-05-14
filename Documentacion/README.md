@@ -271,21 +271,33 @@ python3 main.py
 
 ---
 
-## Ejecutar interfaz gráfica
+## Ejecutar interfaz gráfica (Web)
 
-Entrar a la carpeta:
+El frontend está conectado a un servidor Flask en el backend para gestionar las estructuras de datos (Stacks). Para ejecutar la interfaz correctamente:
+
+Entrar a la carpeta del proyecto (si no lo has hecho):
 
 ```bash
-cd interfaz
+cd Proyecto
 ```
 
-Abrir el archivo:
+Instalar las dependencias requeridas (Flask):
+
+```bash
+pip install flask
+```
+
+Ejecutar el servidor principal:
+
+```bash
+python3 app.py
+```
+
+Por último, abrir en tu navegador web la siguiente dirección:
 
 ```txt
-index.html
+http://127.0.0.1:5001
 ```
-
-en el navegador.
 
 ---
 
