@@ -3,10 +3,18 @@
 # Alexander López - 20250555
 # Daniel Piñol - 20250409
 
+---
 
-## Descripción del Proyecto
+# Descripción del Proyecto
 
 Este proyecto consiste en el desarrollo de un editor de notas simple que implementa una estructura de datos de doble stack (doble pila) para manejar las funciones de Undo y Redo.
+
+El sistema permite:
+- escribir texto
+- eliminar texto
+- deshacer acciones
+- rehacer acciones
+- limpiar el editor
 
 ---
 
@@ -23,6 +31,7 @@ Este proyecto consiste en el desarrollo de un editor de notas simple que impleme
 
 # Estructura del Proyecto
 
+```txt
 Final-Proyect_Estructura-de-datos/
 │
 ├── Documentacion/
@@ -40,6 +49,7 @@ Final-Proyect_Estructura-de-datos/
     ├── test_stack.py
     ├── .pytest_cache/
     └── benchmarks/
+```
 
 ---
 
@@ -52,33 +62,36 @@ El proyecto utiliza dos stacks:
 | historial | Guarda las acciones realizadas |
 | redo | Guarda las acciones deshechas |
 
+La doble stack permite mover acciones entre ambas pilas para implementar las operaciones Undo y Redo.
+
 ---
 
-# Funcionamiento
+# Funcionamiento del Proyecto
 
 ## Escritura de texto
 
 Cada vez que el usuario escribe texto:
-- se crea una acción
-- la acción se guarda en la stack historial
+1. se crea una acción
+2. la acción se guarda en la stack historial
+3. la stack redo se limpia
 
 ---
 
 ## Undo
 
 Cuando el usuario utiliza Undo:
-- la última acción se elimina de historial
-- la acción pasa a la stack redo
-- el texto vuelve a su estado anterior
+1. la última acción se elimina de historial
+2. la acción pasa a la stack redo
+3. el texto vuelve a su estado anterior
 
 ---
 
 ## Redo
 
 Cuando el usuario utiliza Redo:
-- la acción se elimina de redo
-- vuelve a historial
-- el texto se restaura
+1. la acción se elimina de redo
+2. vuelve a historial
+3. el texto se restaura
 
 ---
 
@@ -101,16 +114,83 @@ Permite reiniciar completamente el editor y las stacks.
 
 ---
 
-# Implementación de la Stack
+# Implementación Propia de la Stack
+
+La estructura Stack fue implementada manualmente utilizando nodos enlazados.
 
 ## Métodos implementados
 
-- `push()`
-- `pop()`
-- `peek()`
-- `esta_vacia()`
-- `limpiar()`
-- `lista()`
+### push(valor)
+
+Agrega un elemento a la cima de la pila.
+
+#### Complejidad temporal
+```txt
+O(1)
+```
+
+Porque únicamente modifica referencias al nodo superior.
+
+---
+
+### pop()
+
+Elimina y devuelve el elemento de la cima.
+
+#### Complejidad temporal
+```txt
+O(1)
+```
+
+Porque solo elimina el nodo superior.
+
+---
+
+### peek()
+
+Devuelve el valor del tope sin eliminarlo.
+
+#### Complejidad temporal
+```txt
+O(1)
+```
+
+---
+
+### esta_vacia()
+
+Verifica si la pila está vacía.
+
+#### Complejidad temporal
+```txt
+O(1)
+```
+
+---
+
+### limpiar()
+
+Vacía completamente la pila.
+
+#### Complejidad temporal
+```txt
+O(1)
+```
+
+Porque elimina la referencia al nodo superior.
+
+---
+
+### lista()
+
+Convierte la pila en una lista de Python.
+
+#### Complejidad temporal
+```txt
+O(n)
+```
+
+Porque recorre todos los nodos de la pila.
 
 ---
 
@@ -135,13 +215,23 @@ El proyecto incluye pruebas utilizando `unittest`.
 
 # Ejecutar los Tests
 
-## Con unittest
+## Entrar a la carpeta del proyecto
+
+```bash
+cd Proyecto
+```
+
+---
+
+## Ejecutar tests con unittest
 
 ```bash
 python3 -m unittest test_stack.py
 ```
 
-## Con pytest
+---
+
+## Ejecutar tests con pytest
 
 ```bash
 pytest test_stack.py
@@ -149,9 +239,45 @@ pytest test_stack.py
 
 ---
 
+# Clonar el Repositorio
+
+```bash
+git clone git@github.com:Chuty1028/Final-Proyect_Estructura-de-datos.git
+```
+
+Entrar al proyecto:
+
+```bash
+cd Final-Proyect_Estructura-de-datos
+```
+
+---
+
 # Ejecución del Proyecto
 
-## Abrir interfaz gráfica
+## Ejecutar versión Python
+
+Entrar a la carpeta:
+
+```bash
+cd Proyecto
+```
+
+Ejecutar:
+
+```bash
+python3 main.py
+```
+
+---
+
+## Ejecutar interfaz gráfica
+
+Entrar a la carpeta:
+
+```bash
+cd interfaz
+```
 
 Abrir el archivo:
 
@@ -176,10 +302,12 @@ Incluye:
 - botón Redo
 - botón Eliminar
 
----
+La interfaz fue diseñada con un estilo visual inspirado en aplicaciones modernas de notas.
 
 ---
 
 # Conclusión
 
-Este proyecto permitió aplicar estructuras de datos en un caso práctico mediante el desarrollo de un editor de notas funcional. La implementación de una doble stack permitió manejar correctamente las operaciones Undo y Redo. 
+Este proyecto permitió aplicar estructuras de datos en un caso práctico mediante el desarrollo de un editor de notas funcional.
+
+La implementación de una doble stack permitió manejar correctamente las operaciones Undo y Redo, demostrando el uso real de las pilas en aplicaciones modernas.
