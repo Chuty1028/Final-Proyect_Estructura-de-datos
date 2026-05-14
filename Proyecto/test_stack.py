@@ -1,5 +1,5 @@
 import unittest                          
-from stacks import Stack                 
+from Proyecto.stacks import Stack                 
 
 class TestStack(unittest.TestCase):      # hereda de TestCase para tener assertEqual, True, False y None
                                          # dependiendo que hay que probar se usa cada una
