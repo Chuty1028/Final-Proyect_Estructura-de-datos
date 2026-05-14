@@ -57,3 +57,65 @@ class EditorNotas:
         self.redo.limpiar()
 
         self.texto = nuevo_texto
+        
+    # FUNCIONALIDAD CORE 3
+    def deshacer(self):
+
+        if self.historial.esta_vacia():
+            return False
+
+        accion = self.historial.pop()
+
+        self.redo.push(accion)
+
+        self.texto = accion.antes
+
+        return True
+
+    # FUNCIONALIDAD CORE 4
+    def rehacer(self):
+
+        if self.redo.esta_vacia():
+            return False
+
+        accion = self.redo.pop()
+
+        self.historial.push(accion)
+
+        self.texto = accion.despues
+
+        return True
+
+    # FUNCIONALIDAD CORE 5
+    def limpiar_editor(self):
+
+        self.texto = ""
+
+        self.historial.limpiar()
+
+        self.redo.limpiar()
+
+    def obtener_texto(self):
+        return self.texto
+
+    def mostrar_historial(self):
+
+        historial = self.historial.lista()
+
+        acciones = []
+
+        for accion in historial:
+            acciones.append(accion.tipo)
+
+        return acciones
+
+    def mostrar_redo(self):
+
+        redo = self.redo.lista()
+
+        acciones = []
+
+        for accion in redo:
+            acciones.append(accion.tipo)
+
+        return acciones
