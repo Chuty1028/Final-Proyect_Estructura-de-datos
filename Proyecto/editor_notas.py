@@ -1,7 +1,7 @@
 from stacks import Stack
 
 
-# clase que representa una accion realizada en el editor
+# clase que representa una accion realizada en el editor 
 class Accion:
 
     # constructor de la accion
@@ -26,7 +26,7 @@ class EditorNotas:
         # texto actual del editor
         self.texto = ""
 
-        # stack principal donde se guardan las acciones realizadas
+        # stack principal donde se guardan las acciones realizadas (el historial actua como UNDO)
         self.historial = Stack()
 
         # stack secundaria donde se guardan las acciones deshechas
@@ -48,18 +48,14 @@ class EditorNotas:
         # tipo de accion
         # texto antes del cambio
         # texto despues del cambio
-        accion = Accion(
-            "escribir",
-            self.texto,
-            nuevo_texto
-        )
+        accion = Accion("escribir", self.texto, nuevo_texto)
 
         # guarda la accion en la stack historial
         self.historial.push(accion)
 
         # limpia redo porque se hizo una nueva accion
         self.redo.limpiar()
-
+ 
         # actualiza el texto del editor
         self.texto = nuevo_texto
 
@@ -83,11 +79,7 @@ class EditorNotas:
             nuevo_texto = self.texto[:-cantidad]
 
         # crea la accion de eliminar
-        accion = Accion(
-            "eliminar",
-            self.texto,
-            nuevo_texto
-        )
+        accion = Accion("eliminar", self.texto, nuevo_texto)
 
         # guarda la accion en historial
         self.historial.push(accion)
@@ -156,6 +148,7 @@ class EditorNotas:
     def obtener_texto(self):
         return self.texto
 
+    
     # muestra las acciones guardadas en historial
     def mostrar_historial(self):
 
