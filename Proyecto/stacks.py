@@ -6,7 +6,7 @@ class Nodo:                                  # es como la cajita donde se va a g
 class Stack:                                 # clase pila implementada con nodos enlazados
     def __init__(self):                      # constructor de la pila
         self.tope = None                     # referencia al nodo en la cima (empieza vacía)
-        self.tamanio = 0                     # contador de elementos en la pila
+        self.tamanio = 0                     # contador de elementos en la pila para que sea O(1)
 
     def push(self, valor):                   # agrega un elemento a la cima
         nodo = Nodo(valor)                   # crea un nuevo nodo con el valor dado
@@ -38,6 +38,6 @@ class Stack:                                 # clase pila implementada con nodos
         resultado = []                       # lista donde se guardarán los valores
         actual = self.tope                   # empieza desde el tope
         while actual:                        # recorre cada nodo hasta el final (Mira si actual es un nodo o es none)
-            resultado.append(actual.valor)   # agrega el valor del nodo a la lista
+            resultado.append(actual.valor)   # agrega el valor del nodo a la lista O(n)
             actual = actual.siguiente        # avanza al siguiente nodo
         return resultado                     # devuelve la lista con todos los valores
