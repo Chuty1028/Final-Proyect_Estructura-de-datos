@@ -1,7 +1,8 @@
 from stacks import Stack
 
 
-# clase que representa una accion realizada en el editor 
+# clase que representa una accion realizada en el editor
+# cada vez que el usuario escribe o borra algo se crea una accion
 class Accion:
 
     # constructor de la accion
@@ -10,11 +11,12 @@ class Accion:
         # tipo de accion (escribir o eliminar)
         self.tipo = tipo
 
-        # estado del texto antes de la accion
+        # estado del texto antes de la accion (hol)
         self.antes = antes
 
-        # estado del texto despues de la accion
+        # estado del texto despues de la accion (hola)
         self.despues = despues
+# undo y redo se basan en antes y despues
 
 
 # clase principal del editor de notas
@@ -29,7 +31,7 @@ class EditorNotas:
         # stack principal donde se guardan las acciones realizadas (Este historial actua como UNDO)
         self.historial = Stack()
 
-        # stack secundaria donde se guardan las acciones deshechas
+        # stack secundaria donde se guardan las acciones deshechas (sirve para REDO)
         self.redo = Stack()
 
     
@@ -41,7 +43,7 @@ class EditorNotas:
         if contenido == "":
             return
 
-        # crea el nuevo texto agregando contenido
+        # self.texto es lo que habia y contenido es el nuevo texto que viene
         nuevo_texto = self.texto + contenido
 
         # crea una accion con:
@@ -49,27 +51,30 @@ class EditorNotas:
         # texto antes del cambio
         # texto despues del cambio
         accion = Accion("escribir", self.texto, nuevo_texto)
+        #este objeto es el que permite deshacer porque guardo que ahbia antes y que hay despues
 
-        # guarda la accion en la stack historial
+        # guarda la accion en la stack historial (encima de la pila)
         self.historial.push(accion)
 
         # limpia redo porque se hizo una nueva accion
         self.redo.limpiar()
- 
+        # limpia redo porque si el usuario escribe algo nuevo despues de un undo
+        # los caminos viejos del redo ya no tienen sentido, el historial tomo un camino nuevo
+
         # actualiza el texto del editor
         self.texto = nuevo_texto
 
 
 
     # --- FUNCIONALIDAD CORE 2 / eliminar texto --- 
-    
+    # (cantidad = cuantas letras se borran)
     def eliminar(self, cantidad):
 
-        # si la cantidad es invalida no hace nada
+        # si la cantidad es invalida sale del metodo
         if cantidad <= 0:
             return
 
-        # si la cantidad supera el tamaño del texto
+        # si quiere borrar mas letras de las que hay
         # el editor queda vacio
         if cantidad > len(self.texto):
             nuevo_texto = ""
@@ -81,7 +86,7 @@ class EditorNotas:
         # crea la accion de eliminar
         accion = Accion("eliminar", self.texto, nuevo_texto)
 
-        # guarda la accion en historial
+        # guarda la accion en historial para poder hacer undo despues
         self.historial.push(accion)
 
         # limpia redo porque existe una nueva accion
