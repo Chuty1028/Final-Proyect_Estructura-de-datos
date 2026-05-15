@@ -15,12 +15,14 @@ editor = EditorNotas()
 
 
 # ruta principal: cuando el usuario abre http://127.0.0.1:5001 lo lleva al index.html de interfaz/
+# app le dice a flask
 @app.route("/")
 def index():
     return send_from_directory(INTERFAZ_DIR, "index.html")
 
 
 # sirve los archivos estáticos de la carpeta interfaz/ (style.css, script.js, etc.)
+# sin esto el html cargaria sin estilos ni js
 @app.route("/<path:filename>")
 def static_files(filename):
     return send_from_directory(INTERFAZ_DIR, filename)
@@ -29,8 +31,8 @@ def static_files(filename):
 # ruta para actualizar el texto completo del editor (el frontend envía el texto íntegro)
 @app.route("/actualizar", methods=["POST"])
 def actualizar():
-    texto_nuevo = request.json.get("texto", "")   # texto completo que envía el frontend
-    texto_anterior = editor.texto                  # texto que tenía antes
+    texto_nuevo = request.json.get("texto", "")   # request es lo que mando el navegador y lo agarra en formato json
+    texto_anterior = editor.texto                  # guarda el texto que tenia antes de este cambio
 
     # calcula el delta: qué se agregó o quitó
     if len(texto_nuevo) > len(texto_anterior):
@@ -76,11 +78,7 @@ def get_estado():
 # función auxiliar que arma el diccionario con el estado actual del editor
 def estado():
     return {
-        "texto": editor.texto,                      # texto actual del editor
-        "undo_size": editor.historial.tamanio,      # cuántas acciones se pueden deshacer
-        "redo_size": editor.redo.tamanio,           # cuántas acciones se pueden rehacer
-        "undo_historial": editor.mostrar_historial(),   # lista de acciones en historial
-        "redo_historial": editor.mostrar_redo(),        # lista de acciones en redo
+        "texto": editor.texto   # unico campo que usa el navegador
     }
 
 

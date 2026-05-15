@@ -144,34 +144,3 @@ class EditorNotas:
         # limpia redo
         self.redo.limpiar()
 
-    # muestra las acciones guardadas en historial
-    def mostrar_historial(self):
-
-        # convierte la stack historial en lista
-        historial = self.historial.lista()
-
-        acciones = []
-
-        # recorre las acciones guardadas
-        for accion in historial:
-
-            # guarda solo el tipo de accion
-            acciones.append(accion.tipo)
-
-        return acciones
-
-    # muestra las acciones guardadas en redo
-    def mostrar_redo(self):
-
-        # convierte redo en lista
-        redo = self.redo.lista()
-
-        acciones = []
-
-        # recorre las acciones guardadas
-        for accion in redo:
-
-            # guarda el tipo de accion
-            acciones.append(accion.tipo)
-
-        return acciones
