@@ -1,4 +1,4 @@
-import os
+import os   # permite trabajar con rutas de carpetas como interfaz esta afuera hay que usarlo
 
 # Flask es el framework web; request lee datos del cliente; jsonify convierte dict a JSON; send_from_directory sirve archivos estáticos
 from flask import Flask, request, jsonify, send_from_directory
@@ -44,14 +44,6 @@ def actualizar():
     # si son iguales no hace nada
 
     return jsonify(estado())
-
-
-# ruta para escribir texto: recibe un JSON con {"texto": "..."} y lo agrega al editor
-@app.route("/escribir", methods=["POST"])
-def escribir():
-    texto = request.json.get("texto", "")   # extrae el campo "texto" del JSON recibido
-    editor.escribir(texto)                  # llama al método escribir del editor
-    return jsonify(estado())                # devuelve el estado actual como JSON
 
 
 # ruta para deshacer la última acción (Ctrl+Z)
