@@ -35,7 +35,7 @@ class EditorNotas:
         self.redo = Stack()
 
     
-    # --- FUNCIONALIDAD 1 / escribir texto --- 
+    # --- FUNCIONALIDAD 1 / escribir texto --- O(n) crea una copia del texto completo
     
     def escribir(self, contenido):
 
@@ -66,7 +66,7 @@ class EditorNotas:
 
 
 
-    # --- FUNCIONALIDAD CORE 2 / eliminar texto --- 
+    # --- FUNCIONALIDAD CORE 2 / eliminar texto --- O(n) crea una copia nueva del texto completo
     # (cantidad = cuantas letras se borran)
     def eliminar(self, cantidad):
 
@@ -96,7 +96,7 @@ class EditorNotas:
         self.texto = nuevo_texto
  
  
-    # --- FUNCIONALIDAD CORE 3 / deshacer accion --- 
+    # --- FUNCIONALIDAD CORE 3 / deshacer accion --- O(1)
 
     def deshacer(self):
 
@@ -116,7 +116,7 @@ class EditorNotas:
         return True
 
 
-    # --- FUNCIONALIDAD CORE 4 rehacer accion --- 
+    # --- FUNCIONALIDAD CORE 4 rehacer accion --- O(1)
     
     def rehacer(self):
 
@@ -136,7 +136,7 @@ class EditorNotas:
         return True
     
 
-    # --- FUNCIONALIDAD CORE 5 / limpiar editor --- 
+    # --- FUNCIONALIDAD CORE 5 / limpiar editor --- O(1)
 
     def limpiar_editor(self):
 
