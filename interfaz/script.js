@@ -21,7 +21,7 @@ async function cargarEstado() {
 /**
  * Event Listener para el textarea.
  * Se ejecuta automáticamente cada vez que el usuario escribe o borra algo ("input").
- * Envía el texto completo al servidor mediante una petición POST para mantener 
+ * Envía el texto completo al servidor mediante una petición POST para mantener
  * la sincronización entre el frontend y las estructuras de datos (Stacks) en el backend.
  */
 editor.addEventListener("input", async () => {

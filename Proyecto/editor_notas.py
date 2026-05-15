@@ -26,7 +26,7 @@ class EditorNotas:
         # texto actual del editor
         self.texto = ""
 
-        # stack principal donde se guardan las acciones realizadas
+        # stack principal donde se guardan las acciones realizadas (undo)
         self.historial = Stack()
 
         # stack secundaria donde se guardan las acciones deshechas
@@ -151,10 +151,6 @@ class EditorNotas:
 
         # limpia redo
         self.redo.limpiar()
-
-    # devuelve el texto actual
-    def obtener_texto(self):
-        return self.texto
 
     # muestra las acciones guardadas en historial
     def mostrar_historial(self):

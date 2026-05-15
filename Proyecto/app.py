@@ -1,4 +1,4 @@
-import os
+import os   # permite trabajar con rutas de carpetas como interfaz esta afuera hay que usarlo
 
 # Flask es el framework web; request lee datos del cliente; jsonify convierte dict a JSON; send_from_directory sirve archivos estáticos
 from flask import Flask, request, jsonify, send_from_directory
