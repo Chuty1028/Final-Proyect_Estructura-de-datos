@@ -26,7 +26,7 @@ class EditorNotas:
         # texto actual del editor
         self.texto = ""
 
-        # stack principal donde se guardan las acciones realizadas (undo)
+        # stack principal donde se guardan las acciones realizadas (Este historial actua como UNDO)
         self.historial = Stack()
 
         # stack secundaria donde se guardan las acciones deshechas
