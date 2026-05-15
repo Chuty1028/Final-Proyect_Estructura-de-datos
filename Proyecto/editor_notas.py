@@ -89,7 +89,7 @@ class EditorNotas:
         # guarda la accion en historial para poder hacer undo despues
         self.historial.push(accion)
 
-        # limpia redo porque existe una nueva accion
+        # limpia redo porque existe una nueva accion, los caminos viejos del redo ya no sirven.
         self.redo.limpiar()
 
         # actualiza el texto
@@ -110,7 +110,7 @@ class EditorNotas:
         # mueve la accion a la stack redo
         self.redo.push(accion)
 
-        # restaura el texto anterior
+        # restaura el texto anterior no borra nada manualmente solo restaura a la foto que guardo anteriormene
         self.texto = accion.antes
 
         return True
