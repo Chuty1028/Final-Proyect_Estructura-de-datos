@@ -46,14 +46,6 @@ def actualizar():
     return jsonify(estado())
 
 
-# ruta para escribir texto: recibe un JSON con {"texto": "..."} y lo agrega al editor
-@app.route("/escribir", methods=["POST"])
-def escribir():
-    texto = request.json.get("texto", "")   # extrae el campo "texto" del JSON recibido
-    editor.escribir(texto)                  # llama al método escribir del editor
-    return jsonify(estado())                # devuelve el estado actual como JSON
-
-
 # ruta para deshacer la última acción (Ctrl+Z)
 @app.route("/undo", methods=["POST"])
 def undo():
