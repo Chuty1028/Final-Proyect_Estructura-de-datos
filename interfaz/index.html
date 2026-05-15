@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Notas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app">
+    <div class="topbar">
+      <div>
+        <p class="subtitle">Alexander López - Daniel Piñol</p>
+        <h1>Editor de Notas</h1>
+      </div>
+
+      <div class="actions">
+        <button id="undoBtn">Undo</button>
+        <button id="redoBtn">Redo</button>
+        <button id="deleteBtn" class="delete">Limpiar</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <textarea id="noteArea" placeholder="Escribe tu nota aquí..."></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
